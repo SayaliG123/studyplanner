@@ -1,4 +1,5 @@
 package com.studyplanner;
+// this class just stores the data like sub.diffilevel and days remaining for exam 
 
 public class Task {
 

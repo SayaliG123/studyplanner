@@ -12,6 +12,8 @@ public class Planner {
 			int p1= a.difficulty_level*2+(10-a.days_left);
 			int p2= b.difficulty_level*2+(10-b.days_left);
 			return p2-p1;
+			//here more priority is given to difficulty level 
+			//highest difficulty level subject require more time for study
 					
 		});
 	}

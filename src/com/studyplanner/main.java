@@ -2,20 +2,20 @@ package com.studyplanner;
 import java.util.*;
 
 
-public class main {
+public class Main {
 
-	public static void Main(String[] args) {
+	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		ArrayList<Task>task;
 		
 		filehandler sa=new filehandler();
 		Planner planner=new Planner();
 		
-		task=sa.loadtask();//it loads the previsous task
+		task=sa.loadtask();//it loads the  task
 		System.out.println("enter no.of subjects");
 		int n=sc.nextInt();
 		
-		for(int i=0;i<=n;i++)
+		for(int i=0;i<n;i++)
 		{
 			sc.nextLine();
 			
