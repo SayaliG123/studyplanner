@@ -1,6 +1,7 @@
 package com.studyplanner;
 import java.io.BufferedReader;
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class filehandler {
 			sa.close();
 			System.out.println("data saved");
 		}
-	catch(IOExeption e)
+	catch(IOException e)
 	{
 		System.out.println("error saving file");
 	}
