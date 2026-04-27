@@ -2,9 +2,15 @@ let tasks = [];
 
 function addTask() {
 
-    let subject = document.getElementById("subject").value;
+    let subject = document.getElementById("subject").value.trim();
     let difficulty = parseInt(document.getElementById("difficulty").value);
     let days = parseInt(document.getElementById("days").value);
+
+    // validation
+    if (!subject || isNaN(difficulty) || isNaN(days)) {
+        alert("Please enter valid input!");
+        return;
+    }
 
     let task = {
         subject: subject,
@@ -16,6 +22,11 @@ function addTask() {
 
     sortTasks();
     generatePlan();
+
+    // clear inputs
+    document.getElementById("subject").value = "";
+    document.getElementById("difficulty").value = "";
+    document.getElementById("days").value = "";
 }
 
 function sortTasks() {
@@ -33,14 +44,18 @@ function generatePlan() {
 
     tasks.forEach(t => {
 
-        let hours = t.difficulty * 2;
+        let days = t.daysLeft === 0 ? 1 : t.daysLeft;
 
-        if (t.daysLeft < 3) {
-            hours += 2;
-        }
+        let baseHours = t.difficulty * 1.5;
+        let urgency = 5 / days;
+
+        let hours = baseHours + urgency;
+
+        if (hours < 1.5) hours = 1.5;
+        if (hours > 7) hours = 7;
 
         let li = document.createElement("li");
-        li.textContent = t.subject + " → " + hours + " hours";
+        li.textContent = t.subject + " → " + hours.toFixed(1) + " hours";
 
         list.appendChild(li);
     });

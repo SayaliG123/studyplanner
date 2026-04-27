@@ -17,21 +17,24 @@ public class Planner {
 					
 		});
 	}
-	public void generateplan (ArrayList<Task>task)
+	public void generateplan(ArrayList<Task> task)
 	{
-		System.out.println(" --- Study Plan ---");
-		
-		for(Task t:task)
-		{
-			int hours= t.difficulty_level*2;
-			
-			if(t.days_left<3)//this is panic mode more hours for study are required
-			{
-				hours=+2;
-			}
-			System.out.println(t.subject+ " -> "+ hours+" Hours");
-			
-		}
+	    System.out.println(" --- Study Plan ---");
+
+	    for(Task t : task)
+	    {
+	        int days = t.days_left == 0 ? 1 : t.days_left;
+
+	        double totalEffort = t.difficulty_level * 30;
+
+	        double urgencyFactor = (double)(10 - days) / 10;
+
+	        double hours = (totalEffort / days) + (urgencyFactor * 2);
+
+	        hours = Math.max(1.5, Math.min(hours, 8));
+
+	        System.out.println(t.subject + " -> " + String.format("%.1f", hours) + " Hours");
+	    }
 	}
 
 }
