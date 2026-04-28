@@ -1,23 +1,12 @@
 package com.studyplanner;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.io.IOException;
 
 public class filehandler {
-
-    // ✅ constructor will clear file automatically
-    public filehandler() {
-        try {
-            File file = new File("data.txt");
-
-            if(file.exists()) {
-                new FileWriter(file, false).close(); // clear file
-                System.out.println("Old data cleared.");
-            }
-        } catch(IOException e) {
-            System.out.println("Error clearing file.");
-        }
-    }
 
     public void savetasks(ArrayList<Task> task)
     {
@@ -27,14 +16,14 @@ public class filehandler {
             for(Task t : task)
             {
                 sa.write(t.subject + "," + t.difficulty_level + "," + t.days_left + "\n");
-            }
+                            }
 
             sa.close();
-            System.out.println("Data saved.");
+            System.out.println("data saved");
         }
         catch(IOException e)
         {
-            System.out.println("Error saving file.");
+            System.out.println("error saving file");
         }
     }
 
@@ -57,8 +46,7 @@ public class filehandler {
                 task.add(new Task(subject, difficulty, daysLeft));
             }
 
-            sa.close();
-        }
+            sa.close();         }
         catch (IOException e) {
             System.out.println("No previous data found.");
         }

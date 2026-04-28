@@ -1,6 +1,6 @@
-let tasks = [];
+let tasks = [];  //it is array 
 
-function addTask() {
+function addTask() {   //this function gathers data from html screen
 
     let subject = document.getElementById("subject").value.trim();
     let difficulty = parseInt(document.getElementById("difficulty").value);
